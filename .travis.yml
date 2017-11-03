@@ -1,0 +1,24 @@
+language: php
+
+php:
+    - 7.1
+
+cache:
+    directories:
+        - $HOME/.composer/cache
+
+matrix:
+    include:
+        - php: 7.1
+          env: COMPOSER_DEPENDENCIES="--prefer-lowest --prefer-stable"
+
+before_script:
+    - composer self-update --no-interaction
+    - composer update --no-interaction --prefer-dist $COMPOSER_DEPENDENCIES
+
+script:
+    - vendor/bin/tester ./tests/cases
+
+after_failure:
+    # Print *.actual content
+    - for i in $(find tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done

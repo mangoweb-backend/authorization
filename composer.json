@@ -1,0 +1,23 @@
+{
+	"name": "mangoweb/authorization",
+	"license": "MIT",
+	"require-dev": {
+		"php": "~7.1",
+		"nette/security": "~2.4",
+		"nette/di": "~2.4",
+		"nette/tester": "~2.0"
+	},
+	"suggest": {
+		"nette/security": "For Nette authorizator support"
+	},
+	"autoload": {
+		"classmap": [
+			"src"
+		]
+	},
+	"autoload-dev": {
+		"classmap": [
+			"tests/model"
+		]
+	}
+}
