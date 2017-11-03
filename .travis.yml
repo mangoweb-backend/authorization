@@ -18,6 +18,8 @@ before_script:
 
 script:
     - vendor/bin/tester ./tests/cases
+    - vendor/bin/phpstan analyse --no-progress --level 7 src/
+
 
 after_failure:
     # Print *.actual content
