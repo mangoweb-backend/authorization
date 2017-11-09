@@ -5,6 +5,7 @@ namespace Mangoweb\Authorization\AccessNodes;
 use Mangoweb\Authorization\AccessEvaluator;
 use Mangoweb\Authorization\Action;
 
+
 interface AccessNode
 {
 

@@ -5,6 +5,7 @@ namespace Mangoweb\Authorization\Scope;
 use Mangoweb\Authorization\AccessNodes\AccessNode;
 use Mangoweb\Authorization\Identity;
 
+
 class FixedScope implements AuthorizationScope
 {
 
