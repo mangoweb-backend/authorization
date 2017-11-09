@@ -2,7 +2,9 @@
 
 namespace Mangoweb\Authorization\Bridges\NetteDI;
 
+use Mangoweb\Authorization\AccessEvaluator;
 use Mangoweb\Authorization\Authorizator;
+use Mangoweb\Authorization\Bridges\NetteSecurity\NetteAccessEvaluator;
 use Mangoweb\Authorization\DefaultAuthorizator;
 use Nette\DI\Compiler;
 use Nette\DI\CompilerExtension;
@@ -19,21 +21,22 @@ class AuthorizationExtension extends CompilerExtension
 
 	public function __construct()
 	{
-		$this->defaults['accessEvaluator'] = class_exists(IAuthorizator::class);
+		$this->defaults['accessEvaluator'] = interface_exists(IAuthorizator::class) ? NetteAccessEvaluator::class : NULL;
 	}
 
 
 	public function loadConfiguration()
 	{
 		$builder = $this->getContainerBuilder();
-		$config = $this->getConfig();
+		$config = $this->validateConfig($this->defaults);
 		$builder->addDefinition($this->prefix('authorizator'))
-			->setType(Authorizator::class)
+			->setClass(Authorizator::class)
 			->setFactory(DefaultAuthorizator::class);
 
 
 		if ($config['accessEvaluator'] !== NULL) {
-			$def = $builder->addDefinition('accessEvaluator');
+			$def = $builder->addDefinition('accessEvaluator')
+				->setClass(AccessEvaluator::class);
 			Compiler::loadDefinition($def, $config['accessEvaluator']);
 		}
 	}
