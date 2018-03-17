@@ -6,10 +6,12 @@
 		"nette/security": "~2.4",
 		"nette/di": "~2.4",
 		"nette/tester": "~2.0",
-		"phpstan/phpstan": "^0.8.5"
+		"phpstan/phpstan": "^0.8.5",
+		"zendframework/zend-permissions-acl": "^2.6"
 	},
 	"suggest": {
-		"nette/security": "For Nette authorizator support"
+		"nette/security": "For Nette authorizator support",
+		"zendframework/zend-permissions-acl": "For Zend Permissions ACL support"
 	},
 	"autoload": {
 		"classmap": [
