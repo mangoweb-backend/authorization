@@ -3,8 +3,8 @@
 	"license": "MIT",
 	"require-dev": {
 		"php": "~7.1",
-		"nette/security": "~2.4",
-		"nette/di": "~2.4",
+		"nette/security": "~3.0",
+		"nette/di": "~3.0",
 		"nette/tester": "~2.0",
 		"phpstan/phpstan": "^0.8.5",
 		"zendframework/zend-permissions-acl": "^2.6"
