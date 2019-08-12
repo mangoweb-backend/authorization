@@ -30,14 +30,14 @@ class AuthorizationExtension extends CompilerExtension
 		$builder = $this->getContainerBuilder();
 		$config = $this->validateConfig($this->defaults);
 		$builder->addDefinition($this->prefix('authorizator'))
-			->setClass(Authorizator::class)
+			->setType(Authorizator::class)
 			->setFactory(DefaultAuthorizator::class);
 
 
 		if ($config['accessEvaluator'] !== NULL) {
-			$def = $builder->addDefinition('accessEvaluator')
-				->setClass(AccessEvaluator::class);
-			Compiler::loadDefinition($def, $config['accessEvaluator']);
+			$builder->addDefinition('accessEvaluator')
+				->setType(AccessEvaluator::class)
+				->setFactory($config['accessEvaluator']);
 		}
 	}
 
